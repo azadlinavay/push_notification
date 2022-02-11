@@ -13,6 +13,7 @@ Future<void> GetToken() async {
         "token": token,
         "uid": UserCredential.user!.uid,
       });
+      SetOptions(merge: true);
     });
   });
 }
