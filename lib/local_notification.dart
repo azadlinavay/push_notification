@@ -42,7 +42,7 @@ class _LocalNoificationState extends State<LocalNoification> {
                 onPressed: () {
                   showNotification();
                 },
-                child: const Text('Send noificatgion'),
+                child: const Text('Send noification'),
               ),
             ),
             ElevatedButton(
