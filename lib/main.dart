@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:push_notification/getTokenClass.dart';
+import 'package:push_notification/local_notification.dart';
 import 'package:push_notification/signIn.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
@@ -11,7 +12,6 @@ void main() async {
   await Firebase.initializeApp().whenComplete(() {
     print("Firebase initialized");
   });
-
   await GetToken();
-  runApp(const SignInPage());
+  runApp(const LocalNoification());
 }
