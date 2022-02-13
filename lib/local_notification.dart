@@ -7,12 +7,13 @@ class LocalNoification extends StatefulWidget {
   @override
   State<LocalNoification> createState() => _LocalNoificationState();
 }
-// Create a channel for Android and IOS devices to show notifications in the notification center 
+
+// Create a channel for Android and IOS devices to show notifications in the notification center
 class _LocalNoificationState extends State<LocalNoification> {
   late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
   @override
-  // TO initialize the plugin 
+  // TO initialize the plugin
   void initState() {
     super.initState();
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
@@ -22,7 +23,8 @@ class _LocalNoificationState extends State<LocalNoification> {
     flutterLocalNotificationsPlugin.initialize(initSetttings,
         onSelectNotification: onSelectNotification);
   }
-// To show a notification 
+
+// To show a notification
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -46,7 +48,6 @@ class _LocalNoificationState extends State<LocalNoification> {
             ElevatedButton(
                 onPressed: () {
                   showNotificationAfter5Sec();
-
                 },
                 child: const Text('Send Notification After 5 seconds')),
           ],
@@ -54,6 +55,7 @@ class _LocalNoificationState extends State<LocalNoification> {
       ),
     );
   }
+
 // Our Functions to show a notification
   showNotification() {
     var android = const AndroidNotificationDetails('channel id', 'channel NAME',
@@ -65,18 +67,25 @@ class _LocalNoificationState extends State<LocalNoification> {
         payload: 'Custom_Sound');
   }
 
-
-
-    showNotificationAfter5Sec() {
+  showNotificationAfter5Sec() {
     var android = const AndroidNotificationDetails('channel id', 'channel NAME',
         priority: Priority.high, importance: Importance.max);
     var ios = IOSNotificationDetails();
     var platform = NotificationDetails(android: android, iOS: ios);
-    flutterLocalNotificationsPlugin.show(
-        5, 'This is 5 Sec', 'After 5 Sec I i Will Show', platform,
-        payload: 'Custom_Sound');
-  }
 
+    flutterLocalNotificationsPlugin.schedule(
+        0,
+        'New Vedio Out',
+        'This is the title of notification',
+        DateTime.now().add(Duration(seconds: 5)),
+        platform,
+        payload: 'Custom_Sound');
+
+    // flutterLocalNotificationsPlugin.zonedSchedule(
+    //     0, 'New Vedio Out', 'This is the title of notification',
+    //     DateTime.now().add(Duration(seconds: 5)), platform,
+    //     payload: 'Custom_Sound');
+  }
 
   void onSelectNotification(String? payload) {
     showDialog(
