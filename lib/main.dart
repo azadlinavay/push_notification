@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:push_notification/app.dart';
 import 'package:push_notification/getTokenClass.dart';
 import 'package:push_notification/local_notification.dart';
 import 'package:push_notification/signIn.dart';
@@ -13,5 +14,5 @@ void main() async {
     print("Firebase initialized");
   });
   await GetToken();
-  runApp(const LocalNoification());
+  runApp(AppView());
 }

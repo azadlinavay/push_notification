@@ -35,7 +35,17 @@ class _SignInPageState extends State<SignInPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text("AZAD"),
+              Text('You have successfully signed in!'),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.popAndPushNamed(context, '/local');
+                  },
+                  child:  Text('Local And Server Notification')),
+              ElevatedButton(
+                  onPressed: (() {
+                    Navigator.popAndPushNamed(context, '/token');
+                  }),
+                  child: const Text('Tokens')),
             ],
           ),
         ),
